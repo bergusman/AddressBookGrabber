@@ -2,7 +2,7 @@
 //  main.m
 //  AddressBookGrabber
 //
-//  Created by Vitaliy B on 30.06.13.
+//  Created by Vitaly Bergon 30.06.13.
 //  Copyright (c) 2013 Vitaly Berg. All rights reserved.
 //
 
@@ -10,8 +10,7 @@
 
 #import "VBAppDelegate.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([VBAppDelegate class]));
     }

@@ -18,6 +18,8 @@
 		44BA15A317806E1C00ABFD7C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44BA15A217806E1C00ABFD7C /* Default-568h@2x.png */; };
 		44BA15A617806E1C00ABFD7C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44BA15A417806E1C00ABFD7C /* MainStoryboard.storyboard */; };
 		44BA15A917806E1C00ABFD7C /* VBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BA15A817806E1C00ABFD7C /* VBViewController.m */; };
+		44BA15B017806EFF00ABFD7C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44BA15AF17806EFF00ABFD7C /* AddressBook.framework */; };
+		44BA15B51780890B00ABFD7C /* VBAddressBookGrabber.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BA15B41780890B00ABFD7C /* VBAddressBookGrabber.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,9 @@
 		44BA15A517806E1C00ABFD7C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		44BA15A717806E1C00ABFD7C /* VBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VBViewController.h; sourceTree = "<group>"; };
 		44BA15A817806E1C00ABFD7C /* VBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VBViewController.m; sourceTree = "<group>"; };
+		44BA15AF17806EFF00ABFD7C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		44BA15B31780890B00ABFD7C /* VBAddressBookGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBAddressBookGrabber.h; sourceTree = "<group>"; };
+		44BA15B41780890B00ABFD7C /* VBAddressBookGrabber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBAddressBookGrabber.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44BA15B017806EFF00ABFD7C /* AddressBook.framework in Frameworks */,
 				44BA158D17806E1C00ABFD7C /* UIKit.framework in Frameworks */,
 				44BA158F17806E1C00ABFD7C /* Foundation.framework in Frameworks */,
 				44BA159117806E1C00ABFD7C /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +79,7 @@
 		44BA158B17806E1C00ABFD7C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44BA15AF17806EFF00ABFD7C /* AddressBook.framework */,
 				44BA158C17806E1C00ABFD7C /* UIKit.framework */,
 				44BA158E17806E1C00ABFD7C /* Foundation.framework */,
 				44BA159017806E1C00ABFD7C /* CoreGraphics.framework */,
@@ -83,11 +90,11 @@
 		44BA159217806E1C00ABFD7C /* AddressBookGrabber */ = {
 			isa = PBXGroup;
 			children = (
+				44BA15B2178088DA00ABFD7C /* Model */,
+				44BA15B1178088B700ABFD7C /* Controllers */,
 				44BA159B17806E1C00ABFD7C /* VBAppDelegate.h */,
 				44BA159C17806E1C00ABFD7C /* VBAppDelegate.m */,
 				44BA15A417806E1C00ABFD7C /* MainStoryboard.storyboard */,
-				44BA15A717806E1C00ABFD7C /* VBViewController.h */,
-				44BA15A817806E1C00ABFD7C /* VBViewController.m */,
 				44BA159317806E1C00ABFD7C /* Supporting Files */,
 			);
 			path = AddressBookGrabber;
@@ -105,6 +112,24 @@
 				44BA15A217806E1C00ABFD7C /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		44BA15B1178088B700ABFD7C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				44BA15A717806E1C00ABFD7C /* VBViewController.h */,
+				44BA15A817806E1C00ABFD7C /* VBViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		44BA15B2178088DA00ABFD7C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				44BA15B31780890B00ABFD7C /* VBAddressBookGrabber.h */,
+				44BA15B41780890B00ABFD7C /* VBAddressBookGrabber.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +202,7 @@
 				44BA159917806E1C00ABFD7C /* main.m in Sources */,
 				44BA159D17806E1C00ABFD7C /* VBAppDelegate.m in Sources */,
 				44BA15A917806E1C00ABFD7C /* VBViewController.m in Sources */,
+				44BA15B51780890B00ABFD7C /* VBAddressBookGrabber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
