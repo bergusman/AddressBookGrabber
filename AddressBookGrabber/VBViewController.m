@@ -37,6 +37,7 @@
 #pragma mark - IBActions
 
 - (IBAction)grabAction:(id)sender {
+    [self authorizateAndGrab];
     [self grabAddressBook];
 }
 
@@ -58,24 +59,36 @@
     }
 }
 
-- (void)grabAddressBook {
-    CFErrorRef error = NULL;
-    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, &error);
-    if (addressBook) {
-        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+- (void)authorizateAndGrab {
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+        ABAddressBookRequestAccessWithCompletion(NULL, ^(bool granted, CFErrorRef error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (!granted) {
                     [self checkAuthorizationStatus];
                     return;
                 }
                 
-                NSArray *people = [VBAddressBookGrabber grabAddressBook:addressBook];
-                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:people options:NSJSONWritingPrettyPrinted error:nil];
-                NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                self.textView.text = jsonString;
+                [self grabAddressBook];
             });
         });
+    } else {
+        [self grabAddressBook];
     }
+}
+
+- (void)grabAddressBook {
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+    
+    VBAddressBookGrabber *addressBookGrabber = [[VBAddressBookGrabber alloc] init];
+    addressBookGrabber.grabbingProperties = [VBAddressBookGrabber allProperties];
+    addressBookGrabber.propertyNames = [VBAddressBookGrabber localizedPropertyNames];
+    addressBookGrabber.dateFormatter = [[NSDateFormatter alloc] init];
+    addressBookGrabber.dateFormatter.dateStyle = NSDateFormatterFullStyle;
+    
+    NSArray *people = [addressBookGrabber grabAddressBook:addressBook];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:people options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    self.textView.text = jsonString;
 }
 
 @end
