@@ -78,6 +78,9 @@
 
 - (void)grabAddressBook {
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+    if (!addressBook) {
+        return;
+    }
     
     VBAddressBookGrabber *addressBookGrabber = [[VBAddressBookGrabber alloc] init];
     addressBookGrabber.grabbingProperties = [VBAddressBookGrabber allProperties];
@@ -89,6 +92,8 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:people options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     self.textView.text = jsonString;
+    
+    CFRelease(addressBook);
 }
 
 @end
